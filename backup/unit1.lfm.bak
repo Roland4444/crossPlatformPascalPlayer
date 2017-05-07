@@ -31,21 +31,22 @@ object Form1: TForm1
     Top = 0
     Width = 75
     Caption = 'Стоп'
+    OnClick = Button3Click
     TabOrder = 2
   end
   object Label1: TLabel
     Left = 16
-    Height = 15
+    Height = 17
     Top = 32
-    Width = 62
+    Width = 65
     Caption = 'Имя файла'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 96
-    Height = 15
+    Height = 17
     Top = 32
-    Width = 34
+    Width = 38
     Caption = 'Label2'
     ParentColor = False
   end
