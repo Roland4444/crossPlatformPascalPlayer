@@ -17,7 +17,7 @@ type
   TForm1 = class(TForm)
     Button1: TButton;
     Button2: TButton;
-    Button3: TButton;
+    Button4: TButton;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -25,7 +25,7 @@ type
     OpenDialog1: TOpenDialog;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
     procedure Label3ChangeBounds(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
     procedure play(FN: String);
@@ -46,7 +46,7 @@ var
   floatable: DWORD; // floating-point channel support?
   FileSong: String;
   CurIndex: Integer;
-
+  Counter : Integer = 0;
 implementation
 
 {$R *.lfm}
@@ -62,7 +62,11 @@ begin
     // And let's play it...
   uos_Play(0);
   curIndex :=    ListBox1.ItemIndex+1;
-  ListBox1.ItemIndex:=curIndex;
+  if (counter>curIndex) then
+  begin
+     ListBox1.ItemIndex:=curIndex;
+  end;
+
 
 end;
 
@@ -75,10 +79,7 @@ begin
   Label2.Caption:=OpenDialog1.FileName;
   FileSong := OpenDialog1.FileName;
   ListBox1.Items.Add(FileSong);
-
-
-
-
+  Counter := counter +1;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -86,7 +87,8 @@ begin
  play(ListBox1.GetSelectedText);
 end;
 
-procedure TForm1.Button3Click(Sender: TObject);
+
+procedure TForm1.Button4Click(Sender: TObject);
 begin
   uos_Stop(0);
 end;
